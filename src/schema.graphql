@@ -1,0 +1,12 @@
+type CurrentTime {
+  currentTime: Float!
+}
+
+type Greeting {
+  message: String!
+}
+
+type Query {
+  currentTime: CurrentTime
+  greeting: Greeting
+}

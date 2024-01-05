@@ -1,11 +1,20 @@
 {
   description = "A very basic flake";
 
-  outputs = { self, nixpkgs }: {
-
-    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
-
-    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
+
+  outputs = { self, flake-parts, systems, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import systems;
+      perSystem = { pkgs, ... }: {
+        packages.nodejs-library = pkgs.callPackage ./nodejs.nix { };
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [ nodejs ];
+        };
+      };
+    };
 }

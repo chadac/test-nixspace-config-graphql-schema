@@ -1,0 +1,25 @@
+{
+  "name": "graphql-schema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && graphql-codegen --config codegen.ts && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dev-dependencies": {
+    "@graphql-codegen/cli": "^5.0.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-resolvers": "^4.0.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "graphql": "^16.8.1"
+  }
+}
