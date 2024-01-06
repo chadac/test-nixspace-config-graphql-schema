@@ -11,7 +11,7 @@
     "clean": "rm -rf ./dist",
     "copy-assets": "cp ./src/schema.graphql ./dist",
     "build": "npm run clean && graphql-codegen --config codegen.ts && tsc && npm run copy-assets",
-    "prepack": "npm run build",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
