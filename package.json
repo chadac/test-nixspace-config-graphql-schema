@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && graphql-codegen --config codegen.ts && tsc",
+    "copy-assets": "cp ./src/schema.graphql ./dist",
+    "build": "npm run clean && graphql-codegen --config codegen.ts && tsc && npm run copy-assets",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
